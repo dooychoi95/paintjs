@@ -18,7 +18,7 @@
  ctx.lineWidth = 2.5;
 
  let painting = false;
- let filling = false;
+ let filling = true;
 
  function StartPainting() {
    painting = true;
@@ -58,11 +58,11 @@
  }
 
  function handleModeClick(event) {
-   if (filling){
-      filling = false;
+   if (!filling){
+      filling = true;
       mode.innerText = "Fill"
    } else {
-      filling = true;
+      filling = false;
       mode.innerText = "Paint"
    }
  }
