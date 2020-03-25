@@ -3,6 +3,7 @@
  const colors = document.getElementsByClassName("jsColor");
  const range = document.getElementById("jsRange");
  const mode = document.getElementById("jsMode");
+ const saveBtn = document.getElementById("jsSave");
 
  const INITIAL_COLOR = "#2c2c2c";
 
@@ -72,12 +73,25 @@
     }
  }
 
+ function handleCM(event) {
+   event.preventDefault();
+ }
+
+ function handleSaveClick() {
+   const image = canvas.toDataURL();
+   const link = document.createElement("a");
+   link.href = image;
+   link.download = "Paintjs Fin!!";
+   link.click();
+ }
+
  if (canvas) {
     canvas.addEventListener("mousemove", onMouseMove);
     canvas.addEventListener("mousedown", StartPainting);
     canvas.addEventListener("mouseup", onMouseUp);
     canvas.addEventListener("mouseleave", onMouseLeave);
     canvas.addEventListener("click", handleCanvasClick);
+    canvas.addEventListener("contextmenu", handleCM);
  }
 
  Array.from(colors).forEach(color =>
@@ -92,3 +106,6 @@
     mode.addEventListener("click", handleModeClick);
  }
  
+ if (saveBtn) {
+   saveBtn.addEventListener("click", handleSaveClick);
+ }
